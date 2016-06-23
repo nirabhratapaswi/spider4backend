@@ -4,7 +4,10 @@
 
 <% @posts.each do |p| %>
 <p><%= p.message %>- - - - -by <b><%= p.by %></b>
-    <%= link_to 'Delete', editor_path(p), method: :delete, data: { confirm: 'Are you sure?' } %></p>
+    <% if p.by == cookies[:user_name] %>
+    <%= link_to 'Delete', editor_path(p), method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
+    <%= p.created_at %></p>
 <% end %>
 
 <%= link_to 'New Post', new_editor_path %>

@@ -1,2 +1,10 @@
-<h1>Viewer#index</h1>
-<p>Find me in app/views/viewer/index.html.erb</p>
+<h1>EDITOR BOARD</h1>
+
+<p>Logged in as: <%= cookies[:user_name] %></p>
+
+<% @posts.each do |p| %>
+<p><%= p.message %>- - - - -by <b><%= p.by %></b>
+    <%= p.created_at %></p>
+<% end %>
+
+<%= link_to 'Logout', login_index_path %>

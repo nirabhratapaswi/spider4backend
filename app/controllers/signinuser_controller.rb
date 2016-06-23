@@ -17,6 +17,11 @@ class SigninuserController < ApplicationController
                 redirect_to url_for(:controller => :editor, :action => :index)
                 return
             end
+            if @check.password == userCheck.password && @check.username == userCheck.username && userCheck.authority == 'viewer'
+                cookies[:user_name] = userCheck.username
+                redirect_to url_for(:controller => :viewer, :action => :index)
+                return
+            end
         end
         redirect_to new_signinuser_path
    end
