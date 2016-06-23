@@ -1,0 +1,31 @@
+<h1>List of Users</h1>
+
+<p>Logged in as <%= cookies[:user_name] %></p>
+
+<table>
+    <tr>
+        <th>USERNAME</th>
+        <th>PASSWORD</th>
+        <th>AUTHORITY</th>
+        <th>DELETE</th>
+    </tr>
+    <% @login.each do |l| %>
+        <% if l.authority != 'admin' || l.username == cookies[:user_name] %>
+            <tr>
+                <td><%= l.username %></td>
+                <td><%= l.password %></td>
+                <td><%= l.authority %></td>
+                <td>- - - - - - -<%= link_to 'Delete', adminloggedin_path(l), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+        <% else %>
+            <tr>
+                <td><%= l.username %></td>
+                <td>****only root access****</td>
+                <td><%= l.authority %></td>
+                <td>****only root access****</td>
+            </tr>
+        <% end %>
+    <% end %>
+</table>
+
+<%= link_to "Logout", login_index_path %>

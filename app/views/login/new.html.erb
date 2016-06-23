@@ -1,0 +1,20 @@
+<%= form_for :login, url: login_index_path do |l| %>
+<p>
+    <%= l.label :username %><br>
+    <%= l.text_field :username %>
+</p>
+<p>
+    <%= l.label :password %><br>
+    <%= l.password_field :password %>
+</p>
+<p>
+    <%= l.select(:authority) do %>
+    <% [['Admin', 'admin'], ['Editor', 'editor'], ['Viewer', 'viewer']].each do |c| -%>
+        <%= content_tag(:option, c.first, value: c.last) %>
+    <% end %>
+    <% end %>
+</p>
+<p>
+    <%= l.submit %>
+</p>
+<% end %>

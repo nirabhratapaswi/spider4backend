@@ -1,0 +1,11 @@
+<h1>EDITOR BOARD</h1>
+
+<p>Logged in as: <%= cookies[:user_name] %></p>
+
+<% @posts.each do |p| %>
+<p><%= p.message %>- - - - -by <b><%= p.by %></b>
+    <%= link_to 'Delete', editor_path(p), method: :delete, data: { confirm: 'Are you sure?' } %></p>
+<% end %>
+
+<%= link_to 'New Post', new_editor_path %>
+<%= link_to 'Logout', login_index_path %>

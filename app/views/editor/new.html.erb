@@ -1,0 +1,9 @@
+<%= form_for :editorpost, url: editor_index_path do |e| %>
+<p>
+    <%= e.label :message %><br>
+    <%= e.text_area :message %>
+</p>
+<p>
+    <%= e.submit :'Post' %>
+</p>
+<% end %>
